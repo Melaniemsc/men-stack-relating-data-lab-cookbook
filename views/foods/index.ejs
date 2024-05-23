@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Welcome to your Pantry, <%= user.username %></h1>
+    <% if (user) { %>
+     <p>Here is your pantry</p>
+     <ul><% pantry.forEach(item => { %>
+      <li>
+        <form action="/users/:userId/foods/<%= item._id %>?_method=DELETE" method="POST">
+          <p><a href="/<%= item._id %>/edit"><%= item.name %></a></p>
+        <button type="submit">🗑️</button>
+      </li>
+     <% }) %>
+    </ul>
+    <% } else { %>
+      <p>There are no items in this pantry</p>
+      <% } %>
+    <a href="/users/:userId/foods/new">add new item</a>
+  </body>
+</html>
