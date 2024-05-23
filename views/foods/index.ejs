@@ -12,15 +12,16 @@
      <p>Here is your pantry</p>
      <ul><% pantry.forEach(item => { %>
       <li>
-        <form action="/users/:userId/foods/<%= item._id %>?_method=DELETE" method="POST">
-          <p><a href="/<%= item._id %>/edit"><%= item.name %></a></p>
+        <form action="/users/<%= user._id%>/foods/<%= item._id %>?_method=DELETE" method="POST">
+          <p><a href="/users/<%= user._id%>/foods/<%= item._id %>/edit"><%= item.name %></a></p>
         <button type="submit">🗑️</button>
+        </form>
       </li>
      <% }) %>
     </ul>
     <% } else { %>
       <p>There are no items in this pantry</p>
       <% } %>
-    <a href="/users/:userId/foods/new">add new item</a>
+    <a href="/users/<%= user._id%>/foods/new">add new item</a>
   </body>
 </html>

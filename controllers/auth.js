@@ -39,7 +39,7 @@ router.post('/sign-up', async (req, res) => {
     await User.create(req.body);
   
     res.redirect('/auth/sign-in');
-  } catch (error) {
+  } catch (err) {
     console.log(error);
     res.redirect('/');
   }
@@ -71,7 +71,7 @@ router.post('/sign-in', async (req, res) => {
     };
   
     res.redirect('/');
-  } catch (error) {
+  } catch (err) {
     console.log(error);
     res.redirect('/');
   }

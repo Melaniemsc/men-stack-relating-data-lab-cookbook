@@ -6,10 +6,12 @@
     <title>Edit</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit your Items <%= user.username %></h1>
-    <p>Item Name<%= currentItem.id %></p>
-        
+    <%- include('./partials/_navbar.ejs') %>
+    <h1>Edit your item, <%= user.username %></h1>
+    <form action='/users/<%= user._id%>/foods/<%=item._id%>?_method=PUT' method="POST">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="<%= item.name %>" required>
+        <button type="submit">Edit item</button>
     </form>
   </body>
 </html>
